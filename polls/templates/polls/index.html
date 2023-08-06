@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page_title }}</title>
+  
+  <!-- Link to Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    /* Custom style for lists */
+    .custom-list {
+    list-style: none;
+    padding-left: 0;
+    }
+
+    .custom-list li {
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 10px;
+    }
+
+    .custom-list li:before {
+    content: "\2022";
+    position: absolute;
+    left: 0;
+    color: #007bff; /* Change this color to your preferred color */
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="mt-5">{{ page_title }}</h1>
+    {% if latest_question_list %}
+    <ul class="custom-list">
+        {% for question in latest_question_list %}
+            <li class="list-unstyled">
+                <a 
+                    title="{{ question.question_text }}"
+                    href="{% url 'polls:detail' question.id %}">
+                    {{ question.question_text }}
+                </a>
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No polls are available.</p>
+    {% endif %}
+  </div>
+  
+  <!-- Link to Bootstrap JS (Optional, for certain interactive components) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
