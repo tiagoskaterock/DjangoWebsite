@@ -14,5 +14,5 @@
 </p>
 
 <p align="center">
-  <img src="img/1.png" alt="Django Website" />
+  <img src="1.png" alt="Django Website" />
 </p>
